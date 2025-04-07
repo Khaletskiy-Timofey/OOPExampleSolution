@@ -1,31 +1,43 @@
-#include "Student.h"
-
-void change(Student student)
-{
-	student.name = "Vova";
-	student.age = 16;
-	student.avgMark = 10.0;
-	student.isAlive = false;
-}
+#include "Teacher.h"
 
 int main()
 {
-	Student* st1 = new Student;
+	Student* students = nullptr;
+	int size;
 
-	st1->name = "Vlad";
-	st1->age = 15;
-	st1->avgMark = 9.9;
-	st1->isAlive = true;
+	cout << "Enter count of students: ";
+	cin >> size;
 
-	Student* st2 = st1;
+	students = new Student[size];
 
-	cout << "Before:" << endl;
-	cout << st1->showStudentInfo() << endl;
+	cout << "Enter data of students:" << endl;
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Student " << i + 1 << ":" << endl;
 
-	st2->name = "Matvey";
+		cout << "\tName: ";
+		cin >> students[i].name;
 
-	cout << "After:" << endl;
-	cout << st1->showStudentInfo() << endl;
+		cout << "\tAge: ";
+		cin >> students[i].age;
+
+		cout << "\tAverage mark: ";
+		cin >> students[i].avgMark;
+
+		cout << "\tIs alive (y/n): ";
+		char answer;
+		cin >> answer;
+
+		students[i].isAlive = islower(answer) == 'y';
+	}
+
+	Teacher teacher;
+
+	Student best_student = teacher.getAllBestStudents(students, size);
+
+	string msg = best_student.isAlive ? "Best student is " + best_student.name : "No best students";
+
+	cout << msg << endl;
 
 	return 0;
 }
