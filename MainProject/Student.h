@@ -5,49 +5,49 @@ class Student
 public:
 	string name;
 	int age;
-	double avgMark;
+	int* marks;
+	int marksCount;
 	bool isAlive;
 
-	// Default constructor or constructor without arguments
-	Student()
+	// Canonical constructor
+	Student(string name, int age, int marksCount, bool isAlive)
 	{
-		name = "No name";
-		age = 13;
-		avgMark = 4.0;
-		isAlive = true;
+		this->name = name;
+		this->age = age;
+		this->isAlive = isAlive;
+		this->marksCount = marksCount;
+		this->marks = new int[marksCount];
+		for (int i = 0; i < marksCount; i++)
+		{
+			this->marks[i] = 4;
+		}
+	}
+
+	// Default constructor or constructor without arguments
+	Student() : Student("No name", 13, 0, true)
+	{
+		marks = nullptr;
 	}
 
 	// Constructor with argument
-	Student(string input_name)
+	Student(string name, int age) : Student(name, age, 0, true)
 	{
-		name = input_name;
-		age = 13;
-		avgMark = 4.0;
-		isAlive = true;
-	}
-
-	// Canonical constructor
-	Student(string input_name, int input_age, double input_avgMark, bool input_isAlive)
-	{
-		name = input_name;
-		age = input_age;
-		avgMark = input_avgMark;
-		isAlive = input_isAlive;
+		marks = nullptr;
 	}
 
 	// Copy constructor
-	Student(const Student& student)
+	Student(const Student& student) : Student(student.name, student.age, student.marksCount, student.isAlive)
 	{
-		name = student.name;
-		age = student.age;
-		avgMark = student.avgMark;
-		isAlive = student.isAlive;
+		
 	}
 
 	// Destructor
 	~Student()
 	{
-		cout << "Destructor" << endl;
+		if (marks != nullptr)
+		{
+			delete[] marks;
+		}
 	}
 
 	string toString()
@@ -56,10 +56,41 @@ public:
 
 		info += "Name: " + name;
 		info += ", Age: " + to_string(age);
-		info += ", Average mark: " + to_string(avgMark);
+		info += ", Marks: " + getAllMarks();
 		info += ", Is alive: ";
 		info += (isAlive ? "Yes" : "No");
 
 		return info;
+	}
+
+	string getAllMarks()
+	{
+		if (marksCount <= 0)
+		{
+			return "[]";
+		}
+
+		string marks_string = "";
+
+		for (int i = 0; i < marksCount; i++)
+		{
+			marks_string += to_string(marks[i]) + ", ";
+		}
+		marks_string += "\b\b";
+
+		return marks_string;
+	}
+
+	int getMark(int markIndex)
+	{
+		return markIndex < 0 || markIndex >= marksCount ? 0 : marks[markIndex];
+	}
+
+	void setMark(int markIndex, int mark)
+	{
+		if (markIndex >= 0 || markIndex < marksCount)
+		{
+			marks[markIndex] = mark;
+		}
 	}
 };

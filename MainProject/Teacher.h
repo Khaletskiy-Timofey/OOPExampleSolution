@@ -1,6 +1,6 @@
 #include "Student.h"
 
-class Teacher
+/*class Teacher
 {
 private:
 	const int BEST_MARK = 9;
@@ -28,4 +28,4 @@ public:
 
 		return best_students;
 	}
-};
+};*/
