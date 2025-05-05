@@ -23,11 +23,11 @@ public:
 
 		for (int i = 0; i < count; i++)
 		{
-			list[i].getName() = names[getRandomNumber(0, namesCount - 1)];
-			list[i].getAge() = getRandomNumber(minAge, maxAge);
+			list[i].setName(names[getRandomNumber(0, namesCount - 1)]);
+			list[i].setAge(getRandomNumber(minAge, maxAge));
 			for (int j = 0; j < list[i].getMarksCount(); j++)
 			{
-				list[i].marks[j] = getRandomNumber(minMark, maxMark);
+				list[i].setMark(j, getRandomNumber(minMark, maxMark));
 			}
 		}
 	}

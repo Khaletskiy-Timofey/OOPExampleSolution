@@ -32,10 +32,6 @@ Student::Student(string name, int age, int marksCount, bool isAlive)
 	}
 }
 
-Student::Student() : Student("No name", 13, 10, true) {}
-Student::Student(string name, int age) : Student(name, age, 0, true) {}
-Student::Student(const Student& student) : Student(student.name, student.age, student.marksCount, student.isAlive) {}
-
 Student::~Student()
 {
 	if (marks != nullptr)
