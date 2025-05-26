@@ -1,22 +1,8 @@
-#include "Initializer.h"
+#include "Worker.h"
 
 int main()
 {
-	int count;
-
-	cout << "Enter count of students: ";
-	cin >> count;
-
-	Student* list = nullptr;
-
-	Initializer initializer;
-
-	initializer.init(list, count);
-
-	for (int i = 0; i < count; i++)
-	{
-		cout << list[i].toString() << endl;
-	}
+	Worker worker;
 
 	return 0;
 }
