@@ -14,7 +14,7 @@ int main()
 	Crocodile crocodile("Aligator");*/
 
 	Animal** animals;
-	int size = 8;
+	int size = 3;
 	//animals = new Animal*[size] {&animal, &cat1, &cat2, &cat3, &dog1, &dog2, &dog3, &crocodile};
 
 	animals = new Animal*[size] {new Dog("Sharly"), new Cat("Adel"), new Crocodile("Aligator")};
