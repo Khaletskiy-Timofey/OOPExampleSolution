@@ -143,6 +143,7 @@
     <ClInclude Include="Bus.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="GasStation.h" />
+    <ClInclude Include="Transport.h" />
     <ClInclude Include="Truck.h" />
   </ItemGroup>
   <ItemGroup>

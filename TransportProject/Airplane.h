@@ -1,9 +1,9 @@
 #pragma once
 
-class Airplane
+#include "Transport.h"
+
+class Airplane : public Transport
 {
 public:
-	int tank;
-
-	Airplane(int tank) : tank(tank) {}
+	Airplane(int tank) : Transport(tank) {}
 };
